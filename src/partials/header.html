@@ -1,0 +1,107 @@
+<header class="header">
+  <div class="container header__container">
+    <!-- <nav class="nav header__nav">
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a class="nav__link nav__link--current" href="#"
+            >Для него</a
+          >
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#">Для нее</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#">Дети</a>
+        </li>
+      </ul>
+    </nav> -->
+    <a class="logo header__logo" href="#" aria-label="logo">
+      <img src="../img/logo.svg" alt="" />
+    </a>
+    <ul class="shop-nav header__shop-nav">
+      <li class="shop-nav__item">
+        <a
+          class="shop-nav__link login card"
+          href="#"
+          aria-label="identification"
+        >
+          <img class="card__img" src="../img/go-to-login.png" alt="" />
+        </a>
+      </li>
+      <li class="shop-nav__item">
+        <a
+          class="shop-nav__link selected card"
+          href="#"
+          aria-label="go to selected"
+        >
+          <img class="card__img" src="../img/selected.png" alt="" />
+          <span class="card__quantity"></span>
+        </a>
+      </li>
+      <li class="shop-nav__item">
+        <a class="shop-nav__link basket card" href="" aria-label="go to basket">
+          <img class="card__img" src="../img/basket.png" alt="" />
+          <span class="card__quantity"></span>
+        </a>
+      </li>
+    </ul>
+    <div class="overlay">
+      <form
+        class="modal-authorize header__modal-authorize active-modal-authorize"
+      >
+        <section class="modal-authorize__inner">
+          <button class="modal-authorize__button-close">x</button>
+          <div class="modal-authorize__indicators">
+            <button
+              class="modal-authorize__sign-in btn-reset active-modal-auth"
+            >
+              Sign in
+            </button>
+            <button class="modal-authorize__new-customer btn-reset">
+              New customer
+            </button>
+          </div>
+          <div class="modal-authorize__email-box">
+            <input
+              class="modal-authorize__input-email"
+              type=" email"
+              id="email"
+              placeholder="Your Email"
+            />
+            <label for="email" class="modal-authorize__label-email"
+              >Email</label
+            >
+          </div>
+          <div class="modal-authorize__password-box">
+            <input
+              class="modal-authorize__input-passowrd"
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Your Password"
+            />
+            <button class="modal-authorize__button-check-password btn-reset">
+              Show
+            </button>
+            <label for="password" class="modal-authorize__label-password"
+              >Password</label
+            >
+          </div>
+          <div class="modal-authorize__checkbox-signed-box">
+            <input
+              class="modal-authorize__checkbox-signed"
+              type="checkbox"
+              id="signed"
+              name="signed"
+              checked
+            />
+            <label for="signed" class="modal-authorize__label-signed"
+              >Keep me signed in</label
+            >
+          </div>
+          <button class="modal-authorize__button-sign-in">sign in</button>
+        </section>
+      </form>
+    </div>
+  </div>
+</header>

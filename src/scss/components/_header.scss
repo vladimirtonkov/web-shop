@@ -1,0 +1,24 @@
+.header {
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+
+  &__logo {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  &__shop-nav {
+    text-align: end;
+  }
+}
+
+
+.logo {
+  display: inline-block;
+  width: 117px;
+  height: 20px;
+}

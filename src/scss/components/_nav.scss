@@ -1,0 +1,29 @@
+.nav {
+
+
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  //   &__item:not(:last-child) {
+  //     margin-right: 20px;
+  //   }
+
+  &__link {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #000;
+    padding: 15px;
+    transition: all .4s
+  }
+
+  &__link--current {
+    font-weight: 700;
+  }
+
+  &__link:hover {
+    background-color: rgb(211, 209, 209);
+  }
+
+}

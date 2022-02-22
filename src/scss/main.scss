@@ -1,0 +1,29 @@
+// базовые подключения
+@import "vars";
+@import "mixins";
+@import "fonts";
+@import "settings";
+
+
+@import "./components/header";
+@import "./components/nav";
+@import "./components/shop-nav";
+@import "./components/content";
+@import "./components/catalog";
+@import "./components/stories";
+@import "./components/stories-main";
+@import "./components/stories-bottom";
+@import "./components/footer";
+@import "./components/shop-information";
+@import "./components/modal-authorize";
+
+
+
+
+
+.site-container {
+  &__content {
+    margin-bottom: 50px;
+
+  }
+}
