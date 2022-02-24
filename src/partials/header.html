@@ -1,20 +1,5 @@
 <header class="header">
   <div class="container header__container">
-    <!-- <nav class="nav header__nav">
-      <ul class="nav__list">
-        <li class="nav__item">
-          <a class="nav__link nav__link--current" href="#"
-            >Для него</a
-          >
-        </li>
-        <li class="nav__item">
-          <a class="nav__link" href="#">Для нее</a>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link" href="#">Дети</a>
-        </li>
-      </ul>
-    </nav> -->
     <a class="logo header__logo" href="#" aria-label="logo">
       <img src="../img/logo.svg" alt="" />
     </a>
@@ -45,7 +30,7 @@
         </a>
       </li>
     </ul>
-    <div class="overlay">
+    <div class="overlay-authorize">
       <form
         class="modal-authorize header__modal-authorize active-modal-authorize"
       >
@@ -100,6 +85,114 @@
             >
           </div>
           <button class="modal-authorize__button-sign-in">sign in</button>
+        </section>
+      </form>
+    </div>
+    <div class="overlay-new-customer">
+      <form class="modal-new-customer modal-authorize header__new-customer">
+        <section class="modal-new-customer__inner modal-authorize__inner">
+          <button
+            class="modal-new-customer__button-close modal-authorize__button-close"
+          >
+            x
+          </button>
+          <div
+            class="modal-new-customer__indicators modal-authorize__indicators"
+          >
+            <button class="modal-authorize__sign-in btn-reset">Sign in</button>
+            <button
+              class="modal-authorize__new-customer btn-reset active-modal-auth"
+            >
+              New customer
+            </button>
+          </div>
+          <div class="modal-new-customer__email-box modal-authorize__email-box">
+            <input
+              class="modal-new-customer__input-email modal-authorize__input-email"
+              type=" email"
+              id="new-email"
+              placeholder="Your Email"
+            />
+            <label
+              for="new-email"
+              class="modal-new-customer__label-email modal-authorize__label-email"
+              >Email</label
+            >
+          </div>
+          <div
+            class="modal-new-customer__password-box modal-authorize__password-box"
+          >
+            <input
+              class="modal-new-customer__input-passowrd modal-authorize__input-passowrd"
+              type="password"
+              id="new-password"
+              name="new-password"
+              placeholder="Your Password"
+            />
+            <button class="modal-authorize__button-check-password btn-reset">
+              Show
+            </button>
+            <label
+              for="new-password"
+              class="modal-new-customer__label-password modal-authorize__label-password"
+              >Password</label
+            >
+          </div>
+          <div
+            class="modal-new-customer__rep-box modal-authorize__password-box"
+          >
+            <input
+              class="modal-new-customer__input-rep modal-authorize__input-passowrd"
+              type="password"
+              id="rep-pass"
+              name="rep-pass"
+              placeholder="Repeat Password"
+            />
+            <button class="modal-authorize__button-check-password btn-reset">
+              Show
+            </button>
+            <label
+              for="rep-pass"
+              class="modal-new-customer__label-rep-pass modal-authorize__label-password"
+              >Repeat password</label
+            >
+          </div>
+          <div class="modal-authorize__checkbox-signed-box">
+            <input
+              class="modal-new-customer__checkbox-signed modal-authorize__checkbox-signed"
+              type="checkbox"
+              id="privacy-notice"
+              name="privacy notice"
+            />
+            <a class="modal-new-customer__priv-notice" href="#" target="_blank"
+              >privacy notice</a
+            >
+          </div>
+          <div class="modal-new-customer__checkbox-sign-up-box">
+            <input
+              class="modal-new-customer__checkbox-sign-up modal-authorize__checkbox-signed"
+              type="checkbox"
+              id="sign-up"
+              name="sign up"
+            />
+            <span class="modal-new-customer__notice-title">
+              Yes, I would like to sign up for a & Other Stories account. I
+              consent to let H&M Group process my personal data to provide me
+              with a personalised & Other Stories account, in accordance with
+              the
+              <a
+                class="modal-new-customer__priv-notice modal-new-customer__sign-up"
+                href="#"
+                target="_blank"
+                >privacy notice</a
+              >
+            </span>
+          </div>
+          <button
+            class="modal-new-customer__button-create-acc modal-authorize__button-sign-in"
+          >
+            create account
+          </button>
         </section>
       </form>
     </div>

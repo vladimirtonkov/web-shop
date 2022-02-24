@@ -1,4 +1,5 @@
-.overlay {
+.overlay-authorize {
+  // display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -6,7 +7,6 @@
   bottom: 0;
   width: 100%;
   height: 100vh;
-  visibility: hidden;
   background: rgba(0, 0, 0, 0.5);
   z-index: 10;
 }
@@ -73,6 +73,7 @@
   &__email-box {
     position: relative;
     width: 100%;
+    margin-bottom: 90px;
   }
 
   &__input-email {
@@ -81,15 +82,15 @@
     border: none;
     outline: none;
     border-bottom: 1px solid;
-    font-size: 20px;
+    font-size: 15px;
     padding-bottom: 10px;
-    margin-bottom: 90px;
   }
 
   &__label-email {
     position: absolute;
     left: 0;
     top: 40px;
+    font-size: 12px;
   }
 
 
@@ -105,7 +106,7 @@
     border: none;
     outline: none;
     border-bottom: 1px solid;
-    font-size: 20px;
+    font-size: 15px;
     padding-bottom: 10px;
     padding-right: 100px;
   }
@@ -115,6 +116,7 @@
     position: absolute;
     left: 0;
     top: 40px;
+    font-size: 12px;
   }
 
 
@@ -142,11 +144,6 @@
   &__checkbox-signed {
     width: 25px;
     height: 25px;
-  }
-
-  input[type=checkbox] {
-    cursor: crosshair;
-    color: green;
   }
 
 
@@ -177,4 +174,96 @@
 
 .active-modal-auth {
   border-bottom: 1px solid;
+}
+
+
+
+
+
+@media (max-width: 766px) {
+
+  .modal-authorize {
+    height: 100%;
+    max-width: 100%;
+
+    &__inner {
+      padding: 90px 80px 40px 80px;
+    }
+
+    &__indicators {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+}
+
+
+
+@media (max-width: 576px) {
+  .modal-authorize {
+
+    &__inner {
+      padding: 90px 20px 40px 20px;
+    }
+
+    &__sign-in {
+      padding-bottom: 10px;
+      margin-right: 40px;
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    &__new-customer {
+      padding-bottom: 10px;
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+  }
+}
+
+
+
+@media (max-width: 350px) {
+  .modal-authorize {
+
+    &__inner {
+      padding: 90px 10px 40px 10px;
+    }
+
+
+    &__sign-in {
+      padding-bottom: 10px;
+      margin-right: 40px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    &__new-customer {
+      padding-bottom: 10px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+
+    &__checkbox-signed {
+      width: 20px;
+      height: 20px;
+    }
+
+    &__button-sign-in {
+      padding: 16px 124px;
+      font-size: 12px;
+    }
+
+    &__input-email {
+      font-size: 12px;
+    }
+
+    &__input-passowrd {
+      font-size: 12px;
+    }
+
+  }
 }

@@ -4,9 +4,12 @@
 
   <body>
     <div class="site-container">
+      <div class="site-container__header"></div>
       @include('partials/header.html')
       <div class="site-container__content"></div>
-      <main class="main">@include('partials/content.html')</main>
+      <main class="main">
+        @include('partials/content.html')
+      </main>
       <footer class="footer">
         <div class="footer__top"></div>
         @include('partials/footer.html')

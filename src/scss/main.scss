@@ -14,16 +14,27 @@
 @import "./components/stories-main";
 @import "./components/stories-bottom";
 @import "./components/footer";
-@import "./components/shop-information";
 @import "./components/modal-authorize";
+@import "./components/modal-new-customer";
 
 
 
 
 
 .site-container {
-  &__content {
-    margin-bottom: 50px;
 
+  &__content {
+    margin-bottom: 30px;
+
+  }
+}
+
+
+
+@media (max-width: 1024px) {
+  .site-container {
+    &__content {
+      margin-bottom: 90px;
+    }
   }
 }
