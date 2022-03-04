@@ -8,7 +8,12 @@
       @include('partials/header.html')
       <div class="site-container__content"></div>
       <main class="main">
-        @include('partials/content.html')
+        <section class="content">
+          <div class="container content__container">
+            @include('partials/catalog-menu.html')
+            @include('partials/content.html')
+          </div>
+        </section>
       </main>
       <footer class="footer">
         <div class="footer__top"></div>
