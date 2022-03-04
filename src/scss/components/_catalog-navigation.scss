@@ -1,0 +1,39 @@
+.catalog-navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+  &__items {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 25px;
+  }
+
+  &__link {
+    transition: all .3s;
+  }
+
+  //   &__link:hover {
+  //     text-decoration: underline;
+  //   }
+
+  &__link:hover:not(:last-child) {
+    text-decoration: underline;
+  }
+
+  &__img {
+    width: 10px;
+    margin-left: 10px;
+  }
+
+}

@@ -1,0 +1,130 @@
+.product-descr {
+  text-align: center;
+  margin-left: 60px;
+
+  &__designed {
+    display: inline-block;
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 60px;
+  }
+
+  &__name {
+    font-size: 23px;
+    margin-bottom: 30px;
+  }
+
+  &__price {
+    margin-bottom: 30px;
+  }
+
+  &__material {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  &__name-color {
+    margin-bottom: 10px;
+  }
+
+
+  &__box-colors {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  &__color {
+    width: 30px;
+    height: 30px;
+  }
+
+  &__btn-color {
+    display: flex;
+    align-items: center;
+    border: 1px solid;
+  }
+
+  &__img-box {
+    padding: 2px;
+  }
+
+  &__color:not(:last-child) {
+    margin-right: 10px;
+  }
+
+
+  &__size {
+    display: inline-block;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+
+
+  &__button-add-bag::before {
+    content: "Add to bag";
+    padding: 12px 20px;
+    color: #fff;
+    background-color: #000;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  //   &__button-add-bag:hover::before {
+  //     content: "Please select size";
+  //     text-transform: uppercase;
+  //   }
+
+}
+
+
+
+.size-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 60px;
+
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid gray;
+    cursor: pointer;
+    transition: all .4s
+  }
+
+  &__item:hover {
+    border: 1px solid;
+    background-color: rgb(194, 193, 193);
+    color: #fff;
+  }
+
+  // &__item:not(:last-child) {
+  //   margin-right: 10px;
+  // }
+
+
+  &__num {
+    font-size: 13px;
+  }
+
+
+}
+
+
+
+
+
+@media (max-width: 1024px) {
+  .product-descr {
+    margin-left: 0px;
+
+  }
+}

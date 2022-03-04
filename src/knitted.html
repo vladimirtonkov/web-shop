@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+  @include('partials/head.html')
+
+  <body>
+    <div class="site-container">
+      <div class="site-container__header"></div>
+      @include('partials/header.html')
+
+      <main class="main">
+        <section class="content">
+          <div class="container content__container">
+            @include('partials/catalog-menu.html')
+            @include('partials/catalog-knits.html')
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="footer__top"></div>
+        @include('partials/footer.html')
+      </footer>
+    </div>
+  </body>
+</html>

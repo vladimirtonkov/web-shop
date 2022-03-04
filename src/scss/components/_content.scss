@@ -2,7 +2,7 @@
 
   &__container {
     display: flex;
-    margin: 0 40px;
+    // margin: 0 40px;
     border-bottom: 1px solid;
   }
 
@@ -27,6 +27,14 @@
 
 
 
+
+@media (max-width: 1024px) {
+  .content {
+    &__container {
+      margin: 0 auto;
+    }
+  }
+}
 
 
 @media (max-width: 766px) {

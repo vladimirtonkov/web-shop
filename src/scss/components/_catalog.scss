@@ -1,5 +1,5 @@
 .overlay-burger {
-  display: none;
+  display: block;
   max-width: 200px;
   width: 100%;
   margin-right: 10px;
@@ -46,7 +46,17 @@
 
 
 
-@media (max-width: 1024px) {
+// @media (max-width: 1023px) {
+
+//   .overlay-burger {
+//     display: none;
+//   }
+// }
+
+
+
+
+@media (max-width: 1023px) {
 
   // body {
   //   position: fixed;
@@ -54,7 +64,7 @@
   // }
 
   .overlay-burger {
-    // display: block;
+    display: none;
     left: 0;
     top: 0;
     position: absolute;

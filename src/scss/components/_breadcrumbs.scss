@@ -1,0 +1,150 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  // margin-top: 20px;
+  margin-bottom: 40px;
+
+
+  &__item {
+    position: relative;
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 40px;
+  }
+
+  &__color-box {
+    display: flex;
+    align-items: center;
+  }
+
+  &__btn-color {
+    transition: all .4s;
+  }
+
+  &__btn-color:hover {
+    text-decoration: underline;
+  }
+
+  &__arrow-down {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  &__clear {
+    width: 15px;
+    height: 15px;
+    margin-left: 15px;
+    cursor: pointer;
+  }
+}
+
+
+
+.lists {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 40px;
+  height: 200px;
+  white-space: nowrap;
+  overflow: auto;
+  //   overflow-y: scroll;
+  padding-top: 20px;
+  padding-left: 5px;
+  padding-right: 15px;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  z-index: 30px;
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6);
+  //   overflow-y: scroll;
+
+}
+
+
+
+.list {
+  margin-bottom: 20px;
+
+  &__check-input {
+    width: 20px;
+    height: 20px;
+  }
+
+
+  &__label {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    margin-left: 15px;
+  }
+}
+
+
+
+
+
+
+
+
+.catalog-filters {
+  display: none;
+}
+
+
+.filters {
+  display: none;
+}
+
+
+
+@media (max-width: 766px) {
+
+  .catalog-filters {
+    display: none;
+
+
+    &__item {
+      position: relative;
+      display: block;
+    }
+
+    &__lists {
+      background: #fff;
+      position: absolute;
+      width: 100%;
+      z-index: 200;
+      padding-top: 10px;
+      padding-left: 30px;
+    }
+
+    &__color {
+      display: none;
+    }
+
+    &__designed {
+      display: none;
+    }
+
+    &__size {
+      display: none;
+    }
+  }
+
+
+  .breadcrumbs {
+
+    &__item {
+      display: none;
+    }
+  }
+
+  .filters {
+    display: block;
+  }
+
+}
