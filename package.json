@@ -16,7 +16,11 @@
   "devDependencies": {
     "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.7",
+    "babel-core": "^6.26.3",
     "babel-loader": "^8.2.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "browser-sync": "^2.26.14",
     "del": "^6.0.0",
     "editorconfig-checker": "^4.0.1",
@@ -55,6 +59,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.2",
     "aos": "^2.3.4",
+    "axios": "^0.26.0",
     "graph-modal": "^1.0.3",
     "graph-tabs": "^1.0.0",
     "inputmask": "^5.0.7",
