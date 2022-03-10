@@ -1,61 +1,76 @@
 <header class="header">
   <div class="container header__container">
-    <a class="logo header__logo" href="../index.html" aria-label="logo">
-      <img src="../img/logo.svg" alt="" />
-    </a>
-    <ul class="shop-nav header__shop-nav">
-      <li class="shop-nav__item">
-        <a
-          class="shop-nav__link login card"
-          href="#"
-          aria-label="identification"
-        >
-          <img class="card__img" src="../img/go-to-login.png" alt="" />
-        </a>
-      </li>
-      <li class="shop-nav__item">
-        <a
-          class="shop-nav__link selected card"
-          href="#"
-          aria-label="go to selected"
-        >
-          <img class="card__img" src="../img/selected.png" alt="" />
-          <span class="card__quantity"></span>
-        </a>
-      </li>
-      <li class="shop-nav__item">
-        <a class="shop-nav__link basket card" href="" aria-label="go to basket">
-          <img class="card__img" src="../img/basket.png" alt="" />
-          <span class="card__quantity"></span>
-        </a>
-      </li>
-    </ul>
-    <div class="overlay-authorize">
-      <form
-        class="modal-authorize header__modal-authorize active-modal-authorize"
-      >
+    <buttom class="header__burger burger burger-visible btn-reset">
+      <img
+        class="burger__img"
+        src="../img/burger.png"
+        alt="кнопка для открытия меню-навигации"
+      />
+    </buttom>
+    <div class="header__inner">
+      <a class="logo header__logo" href="../index.html" aria-label="logo">
+        <img src="../img/logo.svg" alt="" />
+      </a>
+      <ul class="shop-nav header__shop-nav">
+        <li class="shop-nav__item">
+          <a
+            class="shop-nav__link login card"
+            href="#"
+            aria-label="identification"
+          >
+            <img class="card__img" src="../img/go-to-login.png" alt="" />
+          </a>
+        </li>
+        <li class="shop-nav__item">
+          <a
+            class="shop-nav__link selected card"
+            href="#"
+            aria-label="go to selected"
+          >
+            <img class="card__img" src="../img/selected.png" alt="" />
+            <span class="card__quantity"></span>
+          </a>
+        </li>
+        <li class="shop-nav__item">
+          <a
+            class="shop-nav__link basket card"
+            href=""
+            aria-label="go to basket"
+          >
+            <img class="card__img" src="../img/basket.png" alt="" />
+            <span class="card__quantity"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="overlay-authorize auth-active">
+      <form class="modal-authorize header__modal-authorize">
+        <!-- active-modal-authorize -->
         <section class="modal-authorize__inner">
-          <button class="modal-authorize__button-close">x</button>
+          <button class="modal-authorize__button-close sign-in-close">x</button>
           <div class="modal-authorize__indicators">
             <button
               class="modal-authorize__sign-in btn-reset active-modal-auth"
             >
+              <!-- active-modal-auth -->
               Sign in
             </button>
-            <button class="modal-authorize__new-customer btn-reset">
+            <button
+              class="modal-authorize__new-customer new-customer btn-reset"
+            >
               New customer
             </button>
           </div>
           <div class="modal-authorize__email-box">
             <input
               class="modal-authorize__input-email"
-              type=" email"
+              type="email"
               id="email"
               placeholder="Your Email"
             />
             <label for="email" class="modal-authorize__label-email"
-              >Email</label
-            >
+              >Email: <span></span
+            ></label>
           </div>
           <div class="modal-authorize__password-box">
             <input
@@ -69,8 +84,8 @@
               Show
             </button>
             <label for="password" class="modal-authorize__label-password"
-              >Password</label
-            >
+              >Password: <span></span
+            ></label>
           </div>
           <div class="modal-authorize__checkbox-signed-box">
             <input
@@ -88,21 +103,24 @@
         </section>
       </form>
     </div>
-    <div class="overlay-new-customer">
+    <div class="overlay-new-customer auth-active">
       <form class="modal-new-customer modal-authorize header__new-customer">
         <section class="modal-new-customer__inner modal-authorize__inner">
           <button
-            class="modal-new-customer__button-close modal-authorize__button-close"
+            class="modal-new-customer__button-close modal-authorize__button-close new-customer-close"
           >
             x
           </button>
           <div
             class="modal-new-customer__indicators modal-authorize__indicators"
           >
-            <button class="modal-authorize__sign-in btn-reset">Sign in</button>
+            <button class="modal-authorize__sign-in btn-reset sign-in">
+              Sign in
+            </button>
             <button
               class="modal-authorize__new-customer btn-reset active-modal-auth"
             >
+              <!-- active-modal-auth -->
               New customer
             </button>
           </div>
@@ -116,8 +134,8 @@
             <label
               for="new-email"
               class="modal-new-customer__label-email modal-authorize__label-email"
-              >Email</label
-            >
+              >Email: <span></span
+            ></label>
           </div>
           <div
             class="modal-new-customer__password-box modal-authorize__password-box"
@@ -129,14 +147,14 @@
               name="new-password"
               placeholder="Your Password"
             />
-            <button class="modal-authorize__button-check-password btn-reset">
+            <button class="modal-authorize__button-check-password show-create-pass btn-reset">
               Show
             </button>
             <label
               for="new-password"
               class="modal-new-customer__label-password modal-authorize__label-password"
-              >Password</label
-            >
+              >Password: <span></span
+            ></label>
           </div>
           <div
             class="modal-new-customer__rep-box modal-authorize__password-box"
@@ -148,14 +166,14 @@
               name="rep-pass"
               placeholder="Repeat Password"
             />
-            <button class="modal-authorize__button-check-password btn-reset">
+            <button class="modal-authorize__button-check-password show-create-rep-pass btn-reset">
               Show
             </button>
             <label
               for="rep-pass"
               class="modal-new-customer__label-rep-pass modal-authorize__label-password"
-              >Repeat password</label
-            >
+              >Repeat password: <span></span
+            ></label>
           </div>
           <div class="modal-authorize__checkbox-signed-box">
             <input

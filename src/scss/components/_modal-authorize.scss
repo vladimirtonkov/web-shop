@@ -1,5 +1,5 @@
 .overlay-authorize {
-  display: none;
+  // display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -54,10 +54,10 @@
     font-size: 20px;
   }
 
-  &__sign-in:hover {
-    border-bottom: 1px solid gray;
-    opacity: 0.6;
-  }
+  // &__sign-in:hover {
+  //   border-bottom: 1px solid gray;
+  //   opacity: 0.6;
+  // }
 
 
   &__new-customer {
