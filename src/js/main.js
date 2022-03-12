@@ -1,6 +1,11 @@
 import vars from './_vars';
 import './_components';
 import knitted from './data/knitted'
+import './components/filteringknittingclothes';
+import './components/searchknitsclothes';
+
+
+
 
 
 const LENGTH_PASSWORD = 6;
@@ -219,6 +224,7 @@ function breadcrumbsFilter() {
                 color.classList.add('color-lists')
                 colorItem.querySelector('.breadcrumbs__arrow-down').style.transform = 'rotate(0deg)';
             }
+
             size.classList.add('size-lists')
         })
     }
@@ -255,263 +261,12 @@ function breadcrumbsFilter() {
 }
 
 
-
-
 breadcrumbsFilter()
 
 
 
 
 
-const ArrKnitted = []
-const arrProduct = [];
-const filterArr = []
-let arrSize = [];
 
 
 
-console.log(ArrKnitted)
-
-function knittedClothes() {
-    // const catalogKnits = document.querySelector('.catalog-knits__items');
-    const inputColor = document.querySelectorAll('.color-input');
-    const inputSize = document.querySelectorAll('.size-input');
-
-    const sizeItem = document.querySelector('.size-item');
-    const selectedFiltersTitle = document.querySelector('.selected-filters__title')
-
-
-
-    inputColor.forEach(color => {
-        color.addEventListener('change', (e) => {
-            const checkInputColor = e.target.checked
-            const nameInputColor = e.target.name.toLowerCase().trim();
-
-            if (checkInputColor) {
-
-                knitted.forEach(item => {
-                    const nameColorArr = item.color.toLowerCase().trim();
-                    if (nameColorArr === nameInputColor) {
-                        arrProduct.push(item)
-                    }
-                })
-
-                filterArr.push(nameInputColor)
-
-                if (arrProduct.length) {
-                    sizeItem.style.display = 'block';
-
-                    filterClothes(arrProduct)
-                }
-
-                selectedFilters(nameInputColor)
-
-
-            } else if (!checkInputColor) {
-                // console.log('arrProduct ', arrProduct)
-
-                for (let i = 0; i < arrProduct.length; i++) {
-                    if (arrProduct[i].color == nameInputColor) {
-                        arrProduct.splice(i, 1)
-                        i--;
-                    }
-
-                }
-
-                filterClothes(arrProduct)
-                UNcheckElementForFilter(nameInputColor)
-
-                if (!arrProduct.length) {
-                    filterClothes(knitted)
-                    arrProduct.length = 0;
-                    sizeItem.style.display = 'none';
-                }
-
-
-                filterArr.pop()
-                if (!filterArr.length) {
-                    selectedFiltersTitle.style.display = 'none';
-                }
-
-            }
-        })
-    })
-
-    filterClothes(knitted)
-
-
-    inputSize.forEach(size => {
-        size.addEventListener('change', (e) => {
-            const checkInputSize = e.target.checked
-            const nameInputSize = e.target.name.toLowerCase().trim();
-            // let arrSize = []
-            if (checkInputSize) {
-                // if (arrProduct.length) {
-                arrProduct.forEach(product => {
-                    console.log(product)
-                    const nameSizeArr = product.size.toLowerCase().trim();
-                    if (nameInputSize === nameSizeArr) {
-                        arrSize.push(product)
-                    }
-                })
-
-                if (arrSize.length) {
-                    filterClothes(arrSize)
-                }
-
-                selectedFilters(nameInputSize)
-
-
-            } else if (!checkInputSize) {
-                for (let i = 0; i < arrSize.length; i++) {
-                    if (arrSize[i].size == nameInputSize) {
-                        arrSize.splice(i, 1)
-                        i--;
-                    }
-
-                }
-
-                filterClothes(arrSize)
-
-                closeSelectedFilter(na)
-
-                if (!arrSize.length) {
-                    filterClothes(arrProduct)
-                    arrSize.length = 0;
-                }
-            }
-        })
-    })
-
-
-
-}
-
-
-
-knittedClothes()
-
-
-
-function selectedFilters(selectedItem) {
-    const selectedFiltersTitle = document.querySelector('.selected-filters__title')
-    const selectFiltersItems = document.querySelector('.selected-filters__items')
-
-
-    selectedFiltersTitle.style.display = 'block'
-
-    selectFiltersItems.insertAdjacentHTML('beforeEnd',
-        `
-        <li class="selected-filters__item">
-            <article class="selected-filters__button-filter">
-                <span class="selected-filters__name-filter">${selectedItem}</span>
-                <img
-                    class="selected-filters__img-filter"
-                    src="../img/close.png"
-                    alt=""
-                />
-            </article>
-        </li>
-    `
-    )
-
-
-    const btnCloseSelectedFilter = document.querySelectorAll('.selected-filters__img-filter');
-
-
-    if (btnCloseSelectedFilter) {
-        closeSelectedFilter(btnCloseSelectedFilter)
-    }
-
-}
-
-
-function closeSelectedFilter(CurrentBtn) {
-    const selectedFiltersTitle = document.querySelector('.selected-filters__title')
-
-    const selectFiltersItems = document.querySelector('.selected-filters__items')
-    const sizeItem = document.querySelector('.size-item');
-
-
-    if (CurrentBtn) {
-        CurrentBtn.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const parent = btn.parentNode.parentNode
-                parent.remove()
-
-                const nameFilter = parent.querySelector('.selected-filters__name-filter').textContent
-                console.log('nameFilter ', nameFilter)
-                UNcheckedInput(nameFilter.toLowerCase())
-
-                if (!selectFiltersItems.children.length) {
-                    selectedFiltersTitle.style.display = 'none';
-
-                    sizeItem.style.display = 'none';
-                }
-            })
-        })
-    }
-}
-
-
-function UNcheckedInput(nameElement) {
-    const inputColor = document.querySelectorAll('.color-input');
-
-    inputColor.forEach(color => {
-        if (nameElement === color.name.toLowerCase()) {
-            console.log('true')
-            color.checked = false;
-        }
-    })
-}
-
-
-function UNcheckElementForFilter(nameElement) {
-    const nameFilter = document.querySelectorAll('.selected-filters__name-filter')
-
-    nameFilter.forEach(name => {
-        const str = name.textContent.toLowerCase()
-        if (str === nameElement) {
-            const parent = name.parentNode.parentNode;
-            parent.remove()
-        }
-    })
-
-}
-
-
-
-function filterClothes(products) {
-    const catalogKnits = document.querySelector('.catalog-knits__items');
-    catalogKnits.querySelectorAll('.clothes__item').forEach(item => {
-        item.remove();
-    })
-    products.forEach(item => {
-        catalogKnits.insertAdjacentHTML('beforeEnd',
-            `
-            <li class="clothes__item knitted-item">
-            <a class="clothes__box" href="#">
-                <div class="clothes__content">
-                    <img
-                    class="clothes__img"
-                    src=${item.img}
-                    alt="shoe - Chunky Leather Tassle Loafers"
-                    />
-                </div>
-                <div class="clothes__info">
-                    <p class="clothes__name">${item.title}</p>
-                    <span class="clothes__price">${item.price}</span>
-                </div>
-            </a>
-        </li>
-        `)
-    })
-
-}
-
-
-
-
-
-// при удалении товара из фильтрации при нажатии на крестик нужно чтобы оставались только те товары
-// которые соответствуют фильтру
