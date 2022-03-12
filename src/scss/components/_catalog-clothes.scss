@@ -1,4 +1,5 @@
 .catalog-shoes {
+  position: relative;
   width: 100%;
 
   &__container {
@@ -11,12 +12,86 @@
     margin-bottom: 30px;
   }
 
+
+  &__search-knits {
+    // position: absolute;
+    margin-bottom: 40px;
+  }
+
+
+  &__showing-res {
+    margin-bottom: 30px;
+  }
+
+
+  &__no-items {}
+
 }
 
 
 
 .catalog-knits {}
 
+
+.search-knits {
+  position: relative;
+
+  &__input {
+    padding: 12px 50px 12px 10px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid rgb(151, 150, 150);
+  }
+
+  &__button {
+    position: absolute;
+  }
+
+  &__img {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 15px;
+    top: 13px;
+  }
+
+
+  &__items-hint {
+    // display: none;
+    position: absolute;
+    top: 45px;
+  }
+
+}
+
+
+.showing-results {
+  display: none;
+  font-weight: 700;
+
+  &__title {
+    text-transform: uppercase;
+  }
+
+  &__subtitle {
+    padding-bottom: 2px;
+    // border-bottom: 1px solid;
+  }
+}
+
+.hide-knitted-item {
+  display: none;
+}
+
+.no-items {
+  display: none;
+
+  &__text {
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+  }
+}
 
 
 .btn-load-more {
@@ -41,6 +116,46 @@
 
 
 
+
+
+
+.items-hint {
+  background-color: #fff;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+
+
+  &__title {
+    padding-right: 10px;
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    justify-content: space-between;
+    padding: 12px 10px;
+    margin-bottom: 5px;
+    transition: all .3s;
+  }
+
+  &__product:hover {
+
+    background-color: rgb(255, 224, 230);
+  }
+
+
+  &__product:first-child {
+    margin-top: 10px;
+  }
+
+  &__img-search {
+    width: 20px;
+    height: 20px;
+  }
+}
 
 
 
