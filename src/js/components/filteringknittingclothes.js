@@ -150,34 +150,38 @@ function filteringSizeClothes(elem) {
 
 function ShowClothes(products) {
     const catalogKnits = document.querySelector('.catalog-knits__items');
-    catalogKnits.querySelectorAll('.clothes__item').forEach(item => {
-        item.remove();
-    })
-    products.forEach(item => {
-        catalogKnits.insertAdjacentHTML('beforeEnd',
-            `
-            <li class="clothes__item knitted-item hide">
-            <a class="clothes__box" href="#">
-                <div class="clothes__content">
-                    <img
-                    class="clothes__img"
-                    src=${item.img}
-                    alt="shoe - Chunky Leather Tassle Loafers"
-                    />
-                </div>
-                <div class="clothes__info">
-                    <p class="clothes__name">${item.title}</p>
-                    <span class="clothes__price">${item.price}</span>
-                </div>
-            </a>
-        </li>
-        `)
-    })
+    if (catalogKnits) {
+        catalogKnits.querySelectorAll('.clothes__item').forEach(item => {
+            item.remove();
+        })
+
+        products.forEach(item => {
+            catalogKnits.insertAdjacentHTML('beforeEnd',
+                `
+                <li class="clothes__item knitted-item hide" data-name-folder="productsImg/knits" data-id-product=${item.id}>
+                <a class="clothes__box" href="product.html" target="_blank">
+                    <div class="clothes__content">
+                        <img
+                        class="clothes__img"
+                        src=${item.img}
+                        alt="shoe - Chunky Leather Tassle Loafers"
+                        />
+                    </div>
+                    <div class="clothes__info">
+                        <p class="clothes__name">${item.title}</p>
+                        <span class="clothes__price">${item.price}</span>
+                    </div>
+                </a>
+            </li>
+            `)
+        })
+    }
+
 
 }
 
 
-
+// product.html
 
 
 // при удалении товара из фильтрации при нажатии на крестик нужно чтобы оставались только те товары
