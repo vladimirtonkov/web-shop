@@ -60,6 +60,7 @@
     "@popperjs/core": "^2.11.2",
     "aos": "^2.3.4",
     "axios": "^0.26.0",
+    "fs": "0.0.1-security",
     "graph-modal": "^1.0.3",
     "graph-tabs": "^1.0.0",
     "inputmask": "^5.0.7",
