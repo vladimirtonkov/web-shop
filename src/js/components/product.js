@@ -23,6 +23,9 @@ function CompletelyShowCurrentKnittedProd() {
 }
 
 
+
+
+
 // window.onload = function () {
 let arrLiElements = []
 function showKnittedProductCurrentId() {
