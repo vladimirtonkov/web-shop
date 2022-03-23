@@ -34,7 +34,18 @@ export default [
             '../img/productsImg/knits/2/knit-5.jpg',
             '../img/productsImg/knits/2/knit-6.jpg',
             '../img/productsImg/knits/2/knit-7.jpg'
-        ]
+        ],
+        availableSizes: [
+            'xs', 'm', 'l'
+        ],
+        colorList: {
+            "Black": "../img/productsImg/knits/2/colors/black.jpg",
+            "Cream": "../img/productsImg/knits/2/colors/cream.jpg",
+            "Dark-taupe": "../img/productsImg/knits/2/colors/dark-taupe.jpg",
+            "Light-belge": "../img/productsImg/knits/2/colors/light-belge.jpg",
+            "Light-purple": "../img/productsImg/knits/2/colors/light-purple.jpg",
+            "Gray": "../img/productsImg/knits/2/colors/taupe.jpg"
+        }
     },
     {
         id: '3',
