@@ -1,4 +1,5 @@
 .product-descr {
+  position: relative;
   text-align: center;
   margin-left: 60px;
 
@@ -28,30 +29,18 @@
   }
 
 
-  &__box-colors {
+  &__color-items {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    gap: 4px;
     margin-bottom: 20px;
   }
 
-  &__color {
-    width: 30px;
-    height: 30px;
-  }
-
-  &__btn-color {
-    display: flex;
-    align-items: center;
-    border: 1px solid;
-  }
-
-  &__img-box {
-    padding: 2px;
-  }
-
-  &__color:not(:last-child) {
-    margin-right: 10px;
+  &__color-item {
+    width: 65px;
+    height: 100px;
+    cursor: pointer;
   }
 
 
@@ -62,9 +51,17 @@
   }
 
 
-  &__button-add-bag::before {
-    content: "Add to bag";
-    padding: 12px 20px;
+  // &__button-add-bag::before {
+  //   content: "Add to bag";
+  //   padding: 20px 80px;
+  //   color: #fff;
+  //   background-color: #000;
+  //   border-radius: 4px;
+  //   text-transform: uppercase;
+  // }
+
+  &__button-add-bag {
+    padding: 20px 80px;
     color: #fff;
     background-color: #000;
     border-radius: 4px;
@@ -75,6 +72,22 @@
   //     content: "Please select size";
   //     text-transform: uppercase;
   //   }
+
+
+
+  &__select-size {
+    color: red;
+    margin-bottom: 50px;
+  }
+
+
+
+  &__modal-pop-up_basket {
+    position: absolute;
+    top: 90px;
+    transform: translateX(500%);
+    transition: all 2.1s linear forwards;
+  }
 
 }
 
@@ -101,9 +114,14 @@
   }
 
   &__item:hover {
-    border: 1px solid;
+    border: 1px solid gray;
     background-color: rgb(194, 193, 193);
     color: #fff;
+  }
+
+  &__item:active {
+    transition: all .4s;
+    background-color: blue;
   }
 
   // &__item:not(:last-child) {
@@ -113,13 +131,102 @@
 
   &__num {
     font-size: 13px;
+    text-transform: uppercase;
   }
+
 
 
 }
 
 
 
+
+.active-color {
+  padding: 1px;
+  border: 2px solid rgb(2, 2, 211);
+}
+
+
+.active-size {
+  padding: 4px;
+  border: 2px solid blue;
+}
+
+
+
+
+.pop-up_basket {
+  position: relative;
+  width: 350px;
+  background-color: #fff;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  border: 1px solid;
+  // opacity: 0;
+  // transform: translateX(500%);
+  // transition: all 2.1s linear forwards;
+  // animation: basket 2.1s linear forwards;
+
+  &__shopping-bag {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+  }
+
+  &__inner {
+    display: flex;
+    padding: 40px 20px 20px 20px;
+
+  }
+
+  &__img-box {
+    max-width: 90px;
+    width: 100%;
+    height: 125px;
+  }
+
+  &__descr {
+    margin-left: 30px;
+    font-size: 15px;
+  }
+
+  &__name-product {
+    // text-decoration: underline;
+    margin-bottom: 5px;
+  }
+
+  &__price-product {
+    margin-bottom: 5px;
+  }
+
+  &__quantity-product {
+    margin-bottom: 5px;
+  }
+
+  &__color-product {
+    margin-bottom: 5px;
+  }
+
+}
+
+
+
+
+.show-product-basket {
+  transition: all 2.1s linear forwards;
+  animation: basket 0.7s linear forwards;
+}
+
+
+@keyframes basket {
+  0% {
+    width: 100%;
+    transform: translateX(500%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
 
 
 @media (max-width: 1024px) {
