@@ -2,6 +2,8 @@
   position: relative;
   text-align: center;
   margin-left: 60px;
+  max-width: 300px;
+  width: 100%;
 
   &__designed {
     display: inline-block;
@@ -32,6 +34,7 @@
   &__color-items {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     gap: 4px;
     margin-bottom: 20px;
@@ -65,7 +68,15 @@
     color: #fff;
     background-color: #000;
     border-radius: 4px;
-    text-transform: uppercase;
+    white-space: nowrap;
+    margin-bottom: 30px;
+    transition: all .3s;
+  }
+
+  &__button-add-bag:hover {
+    background-color: #fff;
+    border: 1px solid;
+    color: #000;
   }
 
   //   &__button-add-bag:hover::before {
@@ -228,10 +239,24 @@
   }
 }
 
-
 @media (max-width: 1024px) {
   .product-descr {
     margin-left: 0px;
 
+    &__button-add-bag {
+      padding: 15px 60px
+    }
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .product-descr {
+    margin-left: 0px;
+    max-width: 100%;
+
+    &__button-add-bag {
+      padding: 15px 60px
+    }
   }
 }

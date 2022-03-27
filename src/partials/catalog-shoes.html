@@ -24,157 +24,266 @@
       </ul>
       <h2 class="catalog-navigation__title">New shoes</h2>
     </div>
+    <div class="catalog-shoes__search-knits search-knits">
+      <input
+        class="search-knits__input search-filter-knitting"
+        type="text"
+        placeholder="Search knits"
+        value=""
+      />
+      <button class="search-knits__button search-filter-button btn-reset">
+        <img class="search-knits__img" src="../img/search.png" alt="" />
+      </button>
+      <ul class="search-knits__items-hint items-hint">
+        <!-- <li class="items-hint__product">
+          <span class="items-hint__title">sweater item</span>
+          <button class="items-hint__button-search btn-reset">
+            <img
+              class="items-hint__img-search"
+              src="../img/search.png"
+              alt=""
+            />
+          </button>
+        </li> -->
+      </ul>
+    </div>
+    <div class="catalog-shoes__showing-res showing-results">
+      <span class="showing-results__title">showing results for: </span>
+      <span class="showing-results__subtitle"></span>
+    </div>
     <ul class="breadcrumbs catalog-shoes__breadcrumbs">
-      <li class="breadcrumbs__item filters">
+      <li class="breadcrumbs__item filter-item">
         <div class="breadcrumbs__color-box">
           <button class="breadcrumbs__btn-color btn-reset">Filters</button>
-          <img
-            class="breadcrumbs__arrow-down"
-            src="../img/plus.png"
-            alt=""
-          />
+          <img class="breadcrumbs__arrow-down" src="../img/plus.png" alt="" />
         </div>
       </li>
       <li class="breadcrumbs__item">
-        <div class="breadcrumbs__color-box">
-          <button class="breadcrumbs__btn-color btn-reset">Colors</button>
-          <img
-            class="breadcrumbs__arrow-down"
-            src="../img/down-arrow.png"
-            alt=""
-          />
+        <div class="breadcrumbs__color-box color-item">
+          <button class="breadcrumbs__btn-color btn-reset">
+            Colors
+            <img
+              class="breadcrumbs__arrow-down"
+              src="../img/down-arrow.png"
+              alt=""
+            />
+          </button>
         </div>
-        <ul class="lists">
+        <ul class="lists color color-lists">
           <li class="list">
             <label for="black" class="list__label">
-              <input class="list__check-input" id="black" type="checkbox" />
+              <input
+                class="list__check-input color-input"
+                id="black"
+                type="checkbox"
+                name="Black"
+              />
               <span class="list__title">Black</span>
             </label>
           </li>
           <li class="list">
             <label for="blue" class="list__label">
-              <input class="list__check-input" id="blue" type="checkbox" />
+              <input
+                class="list__check-input color-input"
+                id="blue"
+                type="checkbox"
+                name="Blue"
+              />
               <span class="list__title">Blue</span>
             </label>
           </li>
           <li class="list">
+            <label for="gray" class="list__label">
+              <input
+                class="list__check-input color-input"
+                id="gray"
+                type="checkbox"
+                name="Gray"
+              />
+              <span class="list__title">Gray</span>
+            </label>
+          </li>
+          <li class="list">
+            <label for="green" class="list__label">
+              <input
+                class="list__check-input color-input"
+                id="green"
+                type="checkbox"
+                name="Green"
+              />
+              <span class="list__title">Green</span>
+            </label>
+          </li>
+          <li class="list">
             <label for="brown" class="list__label">
-              <input class="list__check-input" id="brown" type="checkbox" />
+              <input
+                class="list__check-input color-input"
+                id="brown"
+                type="checkbox"
+                name="Brown"
+              />
               <span class="list__title">Brown</span>
             </label>
           </li>
           <li class="list">
             <label for="silver" class="list__label">
-              <input class="list__check-input" id="silver" type="checkbox" />
+              <input
+                class="list__check-input color-input"
+                id="silver"
+                type="checkbox"
+                name="Silver"
+              />
               <span class="list__title">Silver</span>
             </label>
           </li>
           <li class="list">
+            <label for="yellow" class="list__label">
+              <input
+                class="list__check-input color-input"
+                id="silver"
+                type="checkbox"
+                name="Yellow"
+              />
+              <span class="list__title">Yellow</span>
+            </label>
+          </li>
+          <li class="list">
             <label for="beige" class="list__label">
-              <input class="list__check-input" id="beige" type="checkbox" />
+              <input
+                class="list__check-input color-input"
+                id="beige"
+                type="checkbox"
+                name="Beige"
+              />
               <span class="list__title">Beige</span>
             </label>
           </li>
           <li class="list">
             <label for="red" class="list__label">
-              <input class="list__check-input" id="red" type="checkbox" />
+              <input
+                class="list__check-input color-input"
+                id="red"
+                type="checkbox"
+                name="Red"
+              />
               <span class="list__title">Red</span>
             </label>
           </li>
         </ul>
       </li>
       <li class="breadcrumbs__item">
-        <div class="breadcrumbs__color-box">
-          <button class="breadcrumbs__btn-color btn-reset">Designed in</button>
-          <img
-            class="breadcrumbs__arrow-down"
-            src="../img/down-arrow.png"
-            alt=""
-          />
+        <div class="breadcrumbs__color-box size-item">
+          <button class="breadcrumbs__btn-color btn-reset">
+            Size
+            <img
+              class="breadcrumbs__arrow-down"
+              src="../img/down-arrow.png"
+              alt=""
+            />
+          </button>
         </div>
-        <ul class="lists">
+        <ul class="lists size size-lists">
           <li class="list">
-            <label for="designedInParish" class="list__label">
+            <label for="34" class="list__label">
               <input
-                class="list__check-input"
-                id="designedInParish"
+                class="list__check-input size-input"
+                id="34"
                 type="checkbox"
+                name="34"
               />
-              <span class="list__title">designed in parish</span>
+              <span class="list__title">34</span>
             </label>
           </li>
           <li class="list">
-            <label for="designedInStockholm" class="list__label">
+            <label for="35" class="list__label">
               <input
-                class="list__check-input"
-                id="designedInStockholm"
+                class="list__check-input size-input"
+                id="35"
                 type="checkbox"
+                name="35"
               />
-              <span class="list__title">designed in stockholm</span>
-            </label>
-          </li>
-        </ul>
-      </li>
-      <li class="breadcrumbs__item">
-        <div class="breadcrumbs__color-box">
-          <button class="breadcrumbs__btn-color btn-reset">Size</button>
-          <img
-            class="breadcrumbs__arrow-down"
-            src="../img/down-arrow.png"
-            alt=""
-          />
-        </div>
-        <ul class="lists">
-          <li class="list">
-            <label for="size-35" class="list__label">
-              <input class="list__check-input" id="35" type="checkbox" />
               <span class="list__title">35</span>
             </label>
           </li>
           <li class="list">
-            <label for="size-36" class="list__label">
-              <input class="list__check-input" id="36" type="checkbox" />
+            <label for="36" class="list__label">
+              <input
+                class="list__check-input size-input"
+                id="36"
+                type="checkbox"
+                name="36"
+              />
               <span class="list__title">36</span>
             </label>
           </li>
           <li class="list">
-            <label for="size-37" class="list__label">
-              <input class="list__check-input" id="37" type="checkbox" />
+            <label for="37" class="list__label">
+              <input
+                class="list__check-input size-input"
+                id="37"
+                type="checkbox"
+                name="37"
+              />
               <span class="list__title">37</span>
             </label>
           </li>
           <li class="list">
-            <label for="size-38" class="list__label">
-              <input class="list__check-input" id="38" type="checkbox" />
+            <label for="38" class="list__label">
+              <input
+                class="list__check-input size-input"
+                id="38"
+                type="checkbox"
+                name="38"
+              />
               <span class="list__title">38</span>
             </label>
           </li>
           <li class="list">
-            <label for="size-39" class="list__label">
-              <input class="list__check-input" id="39" type="checkbox" />
+            <label for="39" class="list__label">
+              <input
+                class="list__check-input size-input"
+                id="39"
+                type="checkbox"
+                name="39"
+              />
               <span class="list__title">39</span>
             </label>
           </li>
           <li class="list">
-            <label for="size-40" class="list__label">
-              <input class="list__check-input" id="40" type="checkbox" />
+            <label for="40" class="list__label">
+              <input
+                class="list__check-input size-input"
+                id="40"
+                type="checkbox"
+                name="40"
+              />
               <span class="list__title">40</span>
             </label>
           </li>
           <li class="list">
-            <label for="size-41" class="list__label">
-              <input class="list__check-input" id="41" type="checkbox" />
+            <label for="41" class="list__label">
+              <input
+                class="list__check-input size-input"
+                id="41"
+                type="checkbox"
+                name="41"
+              />
               <span class="list__title">41</span>
             </label>
           </li>
           <li class="list">
-            <label for="size-41" class="list__label">
-              <input class="list__check-input" id="no-size" type="checkbox" />
-              <span class="list__title">no size</span>
+            <label for="42" class="list__label">
+              <input
+                class="list__check-input size-input"
+                id="42"
+                type="checkbox"
+                name="42"
+              />
+              <span class="list__title">42</span>
             </label>
           </li>
         </ul>
-      </li> 
+      </li>
       <li class="breadcrumbs__item clear-item">
         <div class="breadcrumbs__color-box">
           <button class="breadcrumbs__btn-color btn-reset">Clear</button>
@@ -182,28 +291,11 @@
         </div>
       </li>
     </ul>
+    <!-- <div class="selected-filters"> -->
+    <!-- <span class="selected-filters__title">Selected Filters: </span>
+      <ul class="selected-filters__items"></ul> -->
     <ul class="catalog-shoes__items clothes">
-      <li class="clothes__item">
-        <a class="clothes__box" href="#">
-          <div class="clothes__content">
-            <img
-              class="clothes__img"
-              src="../img/shoe-1.webp"
-              alt="shoe - Chunky Leather Tassle Loafers"
-            />
-            <img
-              class="clothes__img clothes__img--hover"
-              src="../img/shoe-1-2.webp"
-              alt="shoe - Chunky Leather Tassle Loafers"
-            />
-          </div>
-          <div class="clothes__info">
-            <p class="clothes__name">Chunky Leather Tassle Loafers</p>
-            <span class="clothes__price">1200 руб.</span>
-          </div>
-        </a>
-      </li>
-      <li class="clothes__item">
+      <!-- <li class="clothes__item">
         <a class="clothes__box" href="#">
           <div class="clothes__content">
             <img
@@ -222,210 +314,11 @@
             <span class="clothes__price">1200 руб.</span>
           </div>
         </a>
-      </li>
-      <li class="clothes__item">
-        <a class="clothes__box" href="#">
-          <div class="clothes__content">
-            <img
-              class="clothes__img"
-              src="../img/shoe-3.webp"
-              alt="shoe - Strappy Heeled Leather Sandals"
-            />
-            <img
-              class="clothes__img clothes__img--hover"
-              src="../img/shoe-3-2.webp"
-              alt="shoe - Strappy Heeled Leather Sandals"
-            />
-          </div>
-          <div class="clothes__info">
-            <p class="clothes__name">Strappy Heeled Leather Sandals</p>
-            <span class="clothes__price">1200 руб.</span>
-          </div>
-        </a>
-      </li>
-      <li class="clothes__item">
-        <a class="clothes__box" href="#">
-          <div class="clothes__content">
-            <img
-              class="clothes__img"
-              src="../img/shoe-4.webp"
-              alt="shoe - Veja Venturi"
-            />
-            <img
-              class="clothes__img clothes__img--hover"
-              src="../img/shoe-4-2.webp"
-              alt="shoe - Veja Venturi"
-            />
-          </div>
-          <div class="clothes__info">
-            <p class="clothes__name">Veja Venturi</p>
-            <span class="clothes__price">1200 руб.</span>
-          </div>
-        </a>
-      </li>
-      <li class="clothes__item">
-        <a class="clothes__box" href="#">
-          <div class="clothes__content">
-            <img
-              class="clothes__img"
-              src="../img/shoe-5.webp"
-              alt="shoe - Pointed Leather Ballerina Flats"
-            />
-            <img
-              class="clothes__img clothes__img--hover"
-              src="../img/shoe-5-2.webp"
-              alt="shoe - Pointed Leather Ballerina Flats"
-            />
-          </div>
-          <div class="clothes__info">
-            <p class="clothes__name">Pointed Leather Ballerina Flats</p>
-            <span class="clothes__price">1200 руб.</span>
-          </div>
-        </a>
-      </li>
-      <li class="clothes__item">
-        <a class="clothes__box" href="#">
-          <div class="clothes__content">
-            <img
-              class="clothes__img"
-              src="../img/shoe-6.webp"
-              alt="shoe - Pointed Leather Ballerina Flats"
-            />
-            <img
-              class="clothes__img clothes__img--hover"
-              src="../img/shoe-6-2.webp"
-              alt="shoe - Pointed Leather Ballerina Flats"
-            />
-          </div>
-          <div class="clothes__info">
-            <p class="clothes__name">Pointed Leather Ballerina Flats</p>
-            <span class="clothes__price">1200 руб.</span>
-          </div>
-        </a>
-      </li>
-      <li class="clothes__item">
-        <a class="clothes__box" href="#">
-          <div class="clothes__content">
-            <img
-              class="clothes__img"
-              src="../img/shoe-7.webp"
-              alt="shoe - Pointed Leather Ballerina Flats"
-            />
-            <img
-              class="clothes__img clothes__img--hover"
-              src="../img/shoe-7-2.webp"
-              alt="shoe - Pointed Leather Ballerina Flats"
-            />
-          </div>
-          <div class="clothes__info">
-            <p class="clothes__name">Pointed Leather Ballerina Flats</p>
-            <span class="clothes__price">1200 руб.</span>
-          </div>
-        </a>
-      </li>
-      <li class="clothes__item">
-        <a class="clothes__box" href="#">
-          <div class="clothes__content">
-            <img
-              class="clothes__img"
-              src="../img/shoe-8.webp"
-              alt="shoe - Pointed Leather Ballerina Flats"
-            />
-            <img
-              class="clothes__img clothes__img--hover"
-              src="../img/shoe-8-2.webp"
-              alt="shoe - Pointed Leather Ballerina Flats"
-            />
-          </div>
-          <div class="clothes__info">
-            <p class="clothes__name">Pointed Leather Ballerina Flats</p>
-            <span class="clothes__price">1200 руб.</span>
-          </div>
-        </a>
-      </li>
-      <li class="clothes__item clothes__item--load">
-        <a class="clothes__box" href="#">
-          <div class="clothes__content">
-            <img
-              class="clothes__img"
-              src="../img/shoe-9.webp"
-              alt="shoe - RECYCLED POLYAMIDE"
-            />
-            <img
-              class="clothes__img clothes__img--hover"
-              src="../img/shoe-9-2.webp"
-              alt="shoe - RECYCLED POLYAMIDE"
-            />
-          </div>
-          <div class="clothes__info">
-            <p class="clothes__name">RECYCLED POLYAMIDE</p>
-            <span class="clothes__price">1200 руб.</span>
-          </div>
-        </a>
-      </li>
-      <li class="clothes__item clothes__item--load">
-        <a class="clothes__box" href="#">
-          <div class="clothes__content">
-            <img
-              class="clothes__img"
-              src="../img/shoe-10.webp"
-              alt="shoe - Chunky Leather Chelsea Boots"
-            />
-            <img
-              class="clothes__img clothes__img--hover"
-              src="../img/shoe-10-2.webp"
-              alt="shoe - Chunky Leather Chelsea Boots"
-            />
-          </div>
-          <div class="clothes__info">
-            <p class="clothes__name">Chunky Leather Chelsea Boots</p>
-            <span class="clothes__price">1600 руб.</span>
-          </div>
-        </a>
-      </li>
-      <li class="clothes__item clothes__item--load">
-        <a class="clothes__box" href="#">
-          <div class="clothes__content">
-            <img
-              class="clothes__img"
-              src="../img/shoe-11.webp"
-              alt="shoe - Chunky Leather Chelsea Boots"
-            />
-            <img
-              class="clothes__img clothes__img--hover"
-              src="../img/shoe-11-2.webp"
-              alt="shoe - Chunky Leather Chelsea Boots"
-            />
-          </div>
-          <div class="clothes__info">
-            <p class="clothes__name">CHROME-FREE TANNING</p>
-            <span class="clothes__price">14500 руб.</span>
-          </div>
-        </a>
-      </li>
-      <li class="clothes__item clothes__item--load">
-        <a class="clothes__box" href="#">
-          <div class="clothes__content">
-            <img
-              class="clothes__img"
-              src="../img/shoe-12.webp"
-              alt="shoe - Chunky Leather Chelsea Boots"
-            />
-            <img
-              class="clothes__img clothes__img--hover"
-              src="../img/shoe-12-2.webp"
-              alt="shoe - Chunky Leather Chelsea Boots"
-            />
-          </div>
-          <div class="clothes__info">
-            <p class="clothes__name">Crystal Buckled Leather Loafers</p>
-            <span class="clothes__price">2800 руб.</span>
-          </div>
-        </a>
-      </li>
+      </li> -->
     </ul>
     <button class="catalog-shoes__button-load-more btn-load-more btn-reset">
       load more
     </button>
+    <!-- </div> -->
   </div>
 </div>

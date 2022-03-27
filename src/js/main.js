@@ -13,7 +13,6 @@ import './components/product';
 
 
 
-
 function breadcrumbsFilter() {
     const sizeItem = document.querySelector('.size-item');
     const colorItem = document.querySelector('.color-item');
