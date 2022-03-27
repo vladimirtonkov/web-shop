@@ -37,7 +37,6 @@ getData()
 // }
 
 
-
 function knittedClothes() {
     // const catalogKnits = document.querySelector('.catalog-knits__items');
     const inputColor = document.querySelectorAll('.color-input');
