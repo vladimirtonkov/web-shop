@@ -395,11 +395,39 @@ setTimeout(() => {
 
         }
         sliderImgCurrentProduct()
-    }, 1000)
+    }, 1200)
 
 
 
-}, 500)
+}, 1000)
 
 
 // }
+
+
+function HoverOverTheCartShowMiniBsket() {
+    const basket = document.querySelector('.logo-shop-cart');
+    const miniCart = document.querySelector('.mini-cart')
+    basket.addEventListener('mouseover', () => {
+        document.querySelector('.mini-cart').style.display = 'block';
+        document.querySelector('.main').style.filter = 'blur(4px)';
+    }, false)
+
+    basket.addEventListener('mouseout', () => {
+        document.querySelector('.mini-cart').style.display = 'none';
+        document.querySelector('.main').style.filter = 'blur(0px)';
+    }, false)
+
+    miniCart.addEventListener('mouseover', () => {
+        document.querySelector('.mini-cart').style.display = 'block';
+        document.querySelector('.main').style.filter = 'blur(4px)';
+    })
+
+    miniCart.addEventListener('mouseout', () => {
+        document.querySelector('.mini-cart').style.display = 'none';
+        document.querySelector('.main').style.filter = 'blur(0px)';
+    })
+
+}
+
+HoverOverTheCartShowMiniBsket()
