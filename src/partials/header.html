@@ -31,7 +31,7 @@
             <span class="card__quantity"></span>
           </a>
         </li>
-        <li class="shop-nav__item">
+        <li class="shop-nav__item logo-shop-cart">
           <a
             class="shop-nav__link basket card"
             href=""
@@ -147,7 +147,9 @@
               name="new-password"
               placeholder="Your Password"
             />
-            <button class="modal-authorize__button-check-password show-create-pass btn-reset">
+            <button
+              class="modal-authorize__button-check-password show-create-pass btn-reset"
+            >
               Show
             </button>
             <label
@@ -166,7 +168,9 @@
               name="rep-pass"
               placeholder="Repeat Password"
             />
-            <button class="modal-authorize__button-check-password show-create-rep-pass btn-reset">
+            <button
+              class="modal-authorize__button-check-password show-create-rep-pass btn-reset"
+            >
               Show
             </button>
             <label
@@ -213,6 +217,44 @@
           </button>
         </section>
       </form>
+    </div>
+  </div>
+  <div class="header__shop-cart mini-cart">
+    <div class="mini-cart__inner">
+      <p class="mini-cart__title-info">Your shopping bag is empty</p>
+      <ul class="mini-cart__products">
+        <!-- <li class="mini-cart__product">
+          <a class="mini-cart__link" href="#">
+            <img
+              class="mini-cart__product-img"
+              src="../img/productsImg/knits/2/colors/cream.jpg"
+              alt="product"
+            />
+            <div class="mini-cart__descr">
+              <p class="mini-cart__product-name">Oversized T-shirt</p>
+              <p class="mini-cart__product-price">4999руб.</p>
+              <p class="mini-cart__product-quantity">
+                Quantity: <span>2</span>
+              </p>
+              <p class="mini-cart__product-color">Color: <span>Cream</span></p>
+              <p class="mini-cart__product-size">Size: <span>XL</span></p>
+            </div>
+          </a>
+        </li> -->
+      </ul>
+      <div class="mini-cart__box-order-value">
+        <p class="mini-cart__order-value">Order value</p>
+        <p class="mini-cart__price">4999руб.</p>
+      </div>
+      <div class="mini-cart__box-shipping">
+        <p class="mini-cart__shipping">Shipping</p>
+        <p class="mini-cart__shipping-value">Free</p>
+      </div>
+      <div class="mini-cart__box-total">
+        <p class="mini-cart__total">Total</p>
+        <p class="mini-cart__total-price">4999руб.</p>
+      </div>
+      <button class="mini-cart__button-cart btn-reset">Shopping bag</button>
     </div>
   </div>
 </header>
