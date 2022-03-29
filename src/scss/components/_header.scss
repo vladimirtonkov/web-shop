@@ -82,6 +82,7 @@
   }
 
   &__title-info {
+    display: block;
     font-weight: 700;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -146,6 +147,26 @@
   &__product-size {
     font-size: 13px;
     margin-bottom: 5px;
+  }
+
+  &__box-count-product {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &__count-title {
+    width: calc(100% - 45%);
+    margin-right: 5px;
+    font-style: italic;
+  }
+
+  &__count-value {
+    width: calc(100% - 45%);
+    margin-left: 5px;
+    text-align: right;
+    font-style: italic;
+    font-weight: 700;
   }
 
   &__box-order-value {
