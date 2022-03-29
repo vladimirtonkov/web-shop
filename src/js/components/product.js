@@ -3,6 +3,7 @@
 import axios from 'axios'
 
 let knitted = []
+let ProductFromStorageToMiniCart = []
 
 
 async function getData() {
@@ -43,8 +44,6 @@ setTimeout(() => {
         const products = document.querySelectorAll('.knitted-item');
         const shoesItem = document.querySelectorAll('.shoes-item')
         knitted = JSON.parse(localStorage.getItem('arrProduct'))
-        console.log('products ', products)
-        console.log('shoesItem ', shoesItem)
         if (products.length > 0) {
             console.log('if knitted', knitted)
             products.forEach(product => {
@@ -53,8 +52,6 @@ setTimeout(() => {
                     let dataId = product.dataset.idProduct
                     let nameFolder = product.dataset.nameFolder
                     for (let i = 0; i < knitted.length; i++) {
-                        console.log('knitted[i].id ', knitted[i].id)
-                        console.log('dataId ', dataId)
                         console.log('knitted[i].id === dataId', knitted[i].id === dataId)
                         if (+knitted[i].id === +dataId && arrProductStorage.indexOf(knitted[i].id - 1) === -1) {
                             localStorage.setItem("productId", knitted[i].id - 1)
@@ -64,11 +61,9 @@ setTimeout(() => {
             })
         }
         if (shoesItem.length > 0) {
-            console.log('shoes item')
             shoesItem.forEach(item => {
                 item.addEventListener('click', () => {
                     let dataId = item.dataset.idProduct
-                    console.log('knitted item ', knitted)
                     let nameFolder = item.dataset.nameFolder
                     for (let i = 0; i < knitted.length; i++) {
                         if (+knitted[i].id === +dataId && arrProductStorage.indexOf(knitted[i].id - 1) === -1) {
@@ -136,10 +131,8 @@ setTimeout(() => {
         }
 
 
-        console.log(knitted[productId])
         if (knitted[productId]) {
             knitted[productId].availableSizes.forEach(size => {
-                console.log(size)
                 if (sizeList) {
                     sizeList.insertAdjacentHTML('beforeEnd', `
                     <li class="size-box__item">
@@ -151,7 +144,6 @@ setTimeout(() => {
             })
             if (colorList) {
                 for (let color in knitted[productId].colorList) {
-                    console.log('color ', color)
                     let strList = color.replace(/\s/g, '').toLowerCase();
                     let knittedColor = knitted[productId].color.replace(/\s/g, '').toLowerCase();
                     let img = document.createElement('img');
@@ -185,147 +177,183 @@ setTimeout(() => {
     showKnittedProductCurrentId()
 
 
+    setTimeout(() => {
 
-    function ColorClothesMouseEvent() {
-        const colors = document.querySelectorAll('.product-descr__color-item');
-        const colorProduct = document.querySelector('.product-descr__name-color');
-        const productId = localStorage.getItem('productId');
+        function ColorClothesMouseEvent() {
+            const colors = document.querySelectorAll('.product-descr__color-item');
+            const colorProduct = document.querySelector('.product-descr__name-color');
+            const productId = localStorage.getItem('productId');
+
+            colors.forEach(color => {
+                color.addEventListener('mouseover', () => {
+                    colorProduct.innerHTML = color.dataset.color;
+                }, false)
+                color.addEventListener('mouseout', () => {
+                    // colorProduct.innerHTML = knitted[productId].color[0].toUpperCase() + knitted[productId].color.substr(1);
+                    colorProduct.innerHTML = localStorage.getItem('colorProduct');
+                }, false)
 
 
-
-        colors.forEach(color => {
-            color.addEventListener('mouseover', () => {
-                colorProduct.innerHTML = color.dataset.color;
-            }, false)
-            color.addEventListener('mouseout', () => {
-                // colorProduct.innerHTML = knitted[productId].color[0].toUpperCase() + knitted[productId].color.substr(1);
-                colorProduct.innerHTML = localStorage.getItem('colorProduct');
-            }, false)
-
-
-            color.addEventListener('click', () => {
-                colors.forEach(color => {
-                    color.classList.remove('active-color')
+                color.addEventListener('click', () => {
+                    colors.forEach(color => {
+                        color.classList.remove('active-color')
+                    })
+                    color.classList.add('active-color')
+                    localStorage.setItem('colorProduct', color.dataset.color)
+                    colorProduct.innerHTML = localStorage.getItem('colorProduct');
                 })
-                color.classList.add('active-color')
-                localStorage.setItem('colorProduct', color.dataset.color)
-                colorProduct.innerHTML = localStorage.getItem('colorProduct');
+
             })
 
-        })
 
-
-        colors.forEach(color => {
-            if (color.closest('.active-color')) {
-                colorProduct.innerHTML = color.dataset.color;
-            }
-        })
-    }
-
-    ColorClothesMouseEvent()
-
-
-
-    function addClothesToСart() {
-        const addToShoppingCard = document.querySelector('.product-descr__button-add-bag');
-        const sizeList = document.querySelectorAll('.size-box__item');
-        const sizeBox = document.querySelector('.size-box');
-        const productColor = document.querySelectorAll('.product-descr__color-item')
-        const productName = document.querySelector('.product-descr__name');
-        const productPrice = document.querySelector('.product-descr__price');
-
-        let chosenСlothing;
-        let chosenСolorImg;
-        let chosenSize;
-
-        if (addToShoppingCard) {
-            addToShoppingCard.addEventListener('click', () => {
-                productColor.forEach(color => {
-                    if (color.closest('.active-color')) {
-                        chosenСlothing = color;
-                        chosenСolorImg = chosenСlothing.querySelector('img')
-                    }
-                })
-
-                let count = 0;
-                sizeList.forEach(size => {
-                    if (!size.closest('.active-size')) {
-                        size.style.opacity = '0.7';
-                        count++;
-                    } else {
-                        chosenSize = size.querySelector('.size-box__num')
-                    }
-                })
-
-                if (count >= sizeList.length) {
-                    sizeBox.style.marginBottom = '20px';
-                    document.querySelector('.product-descr__select-size').innerHTML = 'Необходимо выбрать один из размеров';
-                    sizeList.forEach(size => {
-                        size.style.border = '2px solid red';
-                    })
-                } else {
-                    sizeBox.style.marginBottom = '50px';
-                    document.querySelector('.product-descr__select-size').innerHTML = '';
-                    count = 0;
-
-                    addToShoppingCard.style.backgroundColor = 'gray';
-                    addToShoppingCard.style.cursor = 'not-allowed';
-                    document.querySelector('.pop-up_basket__img').src = chosenСolorImg.getAttribute('src');
-                    document.querySelector('.pop-up_basket__name-product').innerHTML = productName.textContent;
-                    document.querySelector('.pop-up_basket__price-product').innerHTML = productPrice.textContent;
-                    document.querySelector('.pop-up_basket__quantity-product span').innerHTML = 1;
-                    document.querySelector('.pop-up_basket__color-product span').innerHTML = chosenСlothing.dataset.color;
-                    document.querySelector('.pop-up_basket__size-product span').innerHTML = chosenSize.textContent;
-
-                    document.querySelector('.product-descr__modal-pop-up_basket').classList.add('show-product-basket');
-                    console.log('aaaaaa', document.querySelector('.product-descr__modal-pop-up_basket').getBoundingClientRect().bottom)
-                    window.scrollBy(0, document.querySelector('.product-descr__modal-pop-up_basket').getBoundingClientRect().top);
-                    window.setTimeout(() => {
-                        document.querySelector('.product-descr__modal-pop-up_basket').classList.remove('show-product-basket');
-                        addToShoppingCard.style.backgroundColor = 'black';
-                        addToShoppingCard.style.cursor = 'pointer';
-                    }, 3500)
+            colors.forEach(color => {
+                if (color.closest('.active-color')) {
+                    colorProduct.innerHTML = color.dataset.color;
                 }
-
             })
         }
 
-    }
+        ColorClothesMouseEvent()
 
 
-    addClothesToСart()
+        function addClothesToСart() {
+            const addToShoppingCard = document.querySelector('.product-descr__button-add-bag');
+            const sizeList = document.querySelectorAll('.size-box__item');
+            const sizeBox = document.querySelector('.size-box');
+            const productColor = document.querySelectorAll('.product-descr__color-item')
+            const productName = document.querySelector('.product-descr__name');
+            const productPrice = document.querySelector('.product-descr__price');
 
+            let chosenСlothing;
+            let chosenСolorImg;
+            let chosenSize;
 
+            if (addToShoppingCard) {
+                addToShoppingCard.addEventListener('click', () => {
+                    productColor.forEach(color => {
+                        if (color.closest('.active-color')) {
+                            chosenСlothing = color;
+                            chosenСolorImg = chosenСlothing.querySelector('img')
+                        }
+                    })
 
-    function selectSize() {
-        const sizeList = document.querySelectorAll('.size-box__item');
-        sizeList.forEach(size => {
-            size.addEventListener('click', () => {
-                sizeList.forEach(item => {
-                    item.classList.remove('active-size')
-                })
-                size.classList.add('active-size')
+                    let count = 0;
+                    sizeList.forEach(size => {
+                        if (!size.closest('.active-size')) {
+                            size.style.opacity = '0.7';
+                            count++;
+                        } else {
+                            chosenSize = size.querySelector('.size-box__num')
+                        }
+                    })
 
-                document.querySelector('.product-descr__select-size').innerHTML = '';
-                sizeList.forEach(size => {
-                    size.style.border = '';
-                })
-                console.log(sizeList)
-                sizeList.forEach(size => {
-                    if (!size.closest('.active-size')) {
-                        size.style.opacity = '0.5';
+                    if (count >= sizeList.length) {
+                        sizeBox.style.marginBottom = '20px';
+                        document.querySelector('.product-descr__select-size').innerHTML = 'Необходимо выбрать один из размеров';
+                        sizeList.forEach(size => {
+                            size.style.border = '2px solid red';
+                        })
                     } else {
-                        size.style.opacity = '1';
+                        sizeBox.style.marginBottom = '50px';
+                        document.querySelector('.product-descr__select-size').innerHTML = '';
+                        count = 0;
+
+                        // Появление Всплывающего модального окна при нажатии на кнопку "add to bag"
+
+                        addToShoppingCard.style.backgroundColor = 'gray';
+                        addToShoppingCard.style.cursor = 'not-allowed';
+                        document.querySelector('.pop-up_basket__img').src = chosenСolorImg.getAttribute('src');
+                        document.querySelector('.pop-up_basket__name-product').innerHTML = productName.textContent;
+                        document.querySelector('.pop-up_basket__price-product').innerHTML = productPrice.textContent;
+                        document.querySelector('.pop-up_basket__quantity-product span').innerHTML = 1;
+                        document.querySelector('.pop-up_basket__color-product span').innerHTML = chosenСlothing.dataset.color;
+                        document.querySelector('.pop-up_basket__size-product span').innerHTML = chosenSize.textContent;
+
+                        // localStorage.setItem('ProductToTheCart', JSON.stringify({
+                        //     img: chosenСolorImg.getAttribute('src'),
+                        //     name: productName.textContent,
+                        //     price: productPrice.textContent,
+                        //     color: chosenСlothing.dataset.color,
+                        //     size: chosenSize.textContent
+                        // }))
+                        let productStorage = localStorage.getItem('ProductFromStorageToMiniCart')
+                        if (ProductFromStorageToMiniCart.length === 0 && productStorage === null) {
+                            ProductFromStorageToMiniCart.push({
+                                img: chosenСolorImg.getAttribute('src'),
+                                name: productName.textContent,
+                                price: productPrice.textContent,
+                                color: chosenСlothing.dataset.color,
+                                size: chosenSize.textContent
+                            })
+
+                        } else {
+                            ProductFromStorageToMiniCart.push(...JSON.parse(localStorage.getItem('ProductFromStorageToMiniCart')))
+                            ProductFromStorageToMiniCart.push({
+                                img: chosenСolorImg.getAttribute('src'),
+                                name: productName.textContent,
+                                price: productPrice.textContent,
+                                color: chosenСlothing.dataset.color,
+                                size: chosenSize.textContent
+                            })
+                        }
+
+                        localStorage.setItem('ProductFromStorageToMiniCart', JSON.stringify(ProductFromStorageToMiniCart))
+
+
+                        // addProducToCart()
+                        getProductFromStorage()
+
+                        // Устанавливает курсор изображения на товар
+                        document.querySelector('.product-descr__modal-pop-up_basket').classList.add('show-product-basket');
+                        console.log('aaaaaa', document.querySelector('.product-descr__modal-pop-up_basket').getBoundingClientRect().top)
+                        window.scrollBy(0, (document.querySelector('.product-descr__modal-pop-up_basket').getBoundingClientRect().top) - 200);
+                        window.setTimeout(() => {
+                            document.querySelector('.product-descr__modal-pop-up_basket').classList.remove('show-product-basket');
+                            addToShoppingCard.style.backgroundColor = 'black';
+                            addToShoppingCard.style.cursor = 'pointer';
+                        }, 3500)
+
                     }
+
+                })
+            }
+
+        }
+
+
+        addClothesToСart()
+
+
+
+        function selectSize() {
+            const sizeList = document.querySelectorAll('.size-box__item');
+            sizeList.forEach(size => {
+                size.addEventListener('click', () => {
+                    sizeList.forEach(item => {
+                        item.classList.remove('active-size')
+                    })
+                    size.classList.add('active-size')
+
+                    document.querySelector('.product-descr__select-size').innerHTML = '';
+                    sizeList.forEach(size => {
+                        size.style.border = '';
+                    })
+                    console.log(sizeList)
+                    sizeList.forEach(size => {
+                        if (!size.closest('.active-size')) {
+                            size.style.opacity = '0.5';
+                        } else {
+                            size.style.opacity = '1';
+                        }
+                    })
                 })
             })
-        })
-    }
+        }
 
 
-    selectSize()
+        selectSize()
 
-    setTimeout(() => {
+        // setTimeout(() => {
         document.querySelectorAll('.clothes__item').forEach(item => {
             item.style.display = 'block'
         })
@@ -397,8 +425,7 @@ setTimeout(() => {
         sliderImgCurrentProduct()
     }, 1200)
 
-
-
+    getProductFromStorage()
 }, 1000)
 
 
@@ -431,3 +458,67 @@ function HoverOverTheCartShowMiniBsket() {
 }
 
 HoverOverTheCartShowMiniBsket()
+
+
+
+
+
+function getProductFromStorage() {
+    const ProductsUl = document.querySelector('.mini-cart__products');
+    const ProductLi = document.querySelectorAll('.mini-cart__product');
+    let sumProductPriceAll = 0;
+
+    if (ProductsUl.querySelectorAll('.mini-cart__product').length > 0) {
+        console.log('ProductsUl.querySelectorAll(.mini-cart__product) ');
+        ProductsUl.querySelectorAll('.mini-cart__product').forEach(item => {
+            item.remove();
+        })
+    }
+
+    let arr = JSON.parse(localStorage.getItem('ProductFromStorageToMiniCart'));
+    console.log('JSON.parse(localStorage.getItem(ProductFromStorageToMiniCart)) ', JSON.parse(localStorage.getItem('ProductFromStorageToMiniCart')))
+    if (arr.length > 0) {
+        arr.forEach(item => {
+            ProductsUl.insertAdjacentHTML('beforeEnd', `
+            <li class="mini-cart__product">
+                <a class="mini-cart__link" href="#">
+                <img
+                    class="mini-cart__product-img"
+                    src=${item.img}
+                    alt="product"
+                />
+                <div class="mini-cart__descr">
+                    <p class="mini-cart__product-name">${item.name}</p>
+                    <p class="mini-cart__product-price">${item.price}</p>
+                    <p class="mini-cart__product-quantity">
+                    Quantity: <span>1</span>
+                    </p>
+                    <p class="mini-cart__product-color">Color: <span>${item.color}</span></p>
+                    <p class="mini-cart__product-size">Size: <span>${item.size}</span></p>
+                </div>
+                </a>
+            </li> 
+        `)
+
+        })
+
+        document.querySelector('.mini-cart__title-info').style.display = 'none';
+    } else {
+        document.querySelector('.mini-cart__title-info').style.display = 'block';
+    }
+
+    arr.forEach(item => {
+        let sumStr = ''
+        for (let i = 0; i < item.price.length; i++) {
+            if (!isNaN(+item.price[i])) {
+                sumStr += item.price[i]
+            }
+        }
+        sumProductPriceAll += (+sumStr)
+    })
+
+    document.querySelector('.mini-cart__price').innerHTML = sumProductPriceAll + ' руб.'
+    document.querySelector('.mini-cart__total-price').innerHTML = sumProductPriceAll + ' руб.'
+    document.querySelector('.mini-cart__count-value').innerHTML = arr.length;
+
+}
