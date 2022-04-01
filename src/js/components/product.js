@@ -2,8 +2,9 @@
 // import knitted from '../data/knitted'
 import axios from 'axios'
 
-let knitted = []
-let ProductFromStorageToMiniCart = []
+// let knitted = []
+const CLOTHES_ARRAY = []
+const PRODUCT_FROM_STORAGE_TO_MINI_CART = []
 
 
 async function getData() {
@@ -14,7 +15,7 @@ async function getData() {
             const response = await axios.get('https://623cab3b7efb5abea6854ea5.mockapi.io/knitted-clothes');
             const data = response.data;
             localStorage.setItem('arrProduct', JSON.stringify(data))
-            knitted = JSON.parse(localStorage.getItem('arrProduct'))
+            CLOTHES_ARRAY = JSON.parse(localStorage.getItem('arrProduct'))
         } catch (e) {
             document.querySelector('.site-container').style.display = 'none';
             document.querySelector('.error-title').style.display = 'block';
@@ -26,7 +27,7 @@ async function getData() {
             const response = await axios.get('https://623cab3b7efb5abea6854ea5.mockapi.io/shoes-clothes');
             const data = response.data;
             localStorage.setItem('arrProduct', JSON.stringify(data))
-            knitted = JSON.parse(localStorage.getItem('arrProduct'))
+            CLOTHES_ARRAY = JSON.parse(localStorage.getItem('arrProduct'))
         } catch (e) {
             document.querySelector('.site-container').style.display = 'none';
             document.querySelector('.error-title').style.display = 'block';
@@ -49,17 +50,17 @@ setTimeout(() => {
     function CompletelyShowCurrentKnittedProd() {
         const products = document.querySelectorAll('.knitted-item');
         const shoesItem = document.querySelectorAll('.shoes-item')
-        knitted = JSON.parse(localStorage.getItem('arrProduct'))
+        CLOTHES_ARRAY = JSON.parse(localStorage.getItem('arrProduct'))
         if (products.length > 0) {
             products.forEach(product => {
                 product.addEventListener('click', () => {
                     console.log('product click')
                     let dataId = product.dataset.idProduct
                     let nameFolder = product.dataset.nameFolder
-                    for (let i = 0; i < knitted.length; i++) {
-                        console.log('knitted[i].id === dataId', knitted[i].id === dataId)
-                        if (+knitted[i].id === +dataId && arrProductStorage.indexOf(knitted[i].id - 1) === -1) {
-                            localStorage.setItem("productId", knitted[i].id - 1)
+                    for (let i = 0; i < CLOTHES_ARRAY.length; i++) {
+                        console.log('CLOTHES_ARRAY[i].id === dataId', CLOTHES_ARRAY[i].id === dataId)
+                        if (+CLOTHES_ARRAY[i].id === +dataId && arrProductStorage.indexOf(CLOTHES_ARRAY[i].id - 1) === -1) {
+                            localStorage.setItem("productId", CLOTHES_ARRAY[i].id - 1)
                         }
                     }
                 })
@@ -70,9 +71,9 @@ setTimeout(() => {
                 item.addEventListener('click', () => {
                     let dataId = item.dataset.idProduct
                     let nameFolder = item.dataset.nameFolder
-                    for (let i = 0; i < knitted.length; i++) {
-                        if (+knitted[i].id === +dataId && arrProductStorage.indexOf(knitted[i].id - 1) === -1) {
-                            localStorage.setItem("productId", knitted[i].id - 1)
+                    for (let i = 0; i < CLOTHES_ARRAY.length; i++) {
+                        if (+CLOTHES_ARRAY[i].id === +dataId && arrProductStorage.indexOf(CLOTHES_ARRAY[i].id - 1) === -1) {
+                            localStorage.setItem("productId", CLOTHES_ARRAY[i].id - 1)
                         }
                     }
                 })
@@ -92,11 +93,11 @@ setTimeout(() => {
         const colorProduct = document.querySelector('.product-descr__name-color');
         const colorList = document.querySelector('.product-descr__color-items');
 
-        knitted = JSON.parse(localStorage.getItem('arrProduct'))
+        CLOTHES_ARRAY = JSON.parse(localStorage.getItem('arrProduct'))
 
         if (productImgUl) {
-            if (knitted && knitted[productId]) {
-                knitted[productId].moreImagesProduct.forEach((image, index) => {
+            if (CLOTHES_ARRAY && CLOTHES_ARRAY[productId]) {
+                CLOTHES_ARRAY[productId].moreImagesProduct.forEach((image, index) => {
                     let imgCreate = document.createElement('img')
                     imgCreate.src = image
                     imgCreate.onload = () => {
@@ -128,16 +129,16 @@ setTimeout(() => {
                     }
                 })
 
-                nameProduct.innerHTML = knitted[productId].title;
-                priceProduct.innerHTML = knitted[productId].price;
-                localStorage.setItem('colorProduct', knitted[productId].color[0].toUpperCase() + knitted[productId].color.substr(1));
+                nameProduct.innerHTML = CLOTHES_ARRAY[productId].title;
+                priceProduct.innerHTML = CLOTHES_ARRAY[productId].price;
+                localStorage.setItem('colorProduct', CLOTHES_ARRAY[productId].color[0].toUpperCase() + CLOTHES_ARRAY[productId].color.substr(1));
                 colorProduct.innerHTML = localStorage.getItem('colorProduct')
             }
         }
 
 
-        if (knitted && knitted[productId]) {
-            knitted[productId].availableSizes.forEach(size => {
+        if (CLOTHES_ARRAY && CLOTHES_ARRAY[productId]) {
+            CLOTHES_ARRAY[productId].availableSizes.forEach(size => {
                 if (sizeList) {
                     sizeList.insertAdjacentHTML('beforeEnd', `
                     <li class="size-box__item">
@@ -148,12 +149,12 @@ setTimeout(() => {
 
             })
             if (colorList) {
-                for (let color in knitted[productId].colorList) {
+                for (let color in CLOTHES_ARRAY[productId].colorList) {
                     let strList = color.replace(/\s/g, '').toLowerCase();
-                    let knittedColor = knitted[productId].color.replace(/\s/g, '').toLowerCase();
+                    let knittedColor = CLOTHES_ARRAY[productId].color.replace(/\s/g, '').toLowerCase();
                     let img = document.createElement('img');
-                    img.src = knitted[productId].colorList[color]
-                    console.log('knitted[productId].colorList[color] ', knitted[productId].colorList[color])
+                    img.src = CLOTHES_ARRAY[productId].colorList[color]
+                    console.log('CLOTHES_ARRAY[productId].colorList[color] ', CLOTHES_ARRAY[productId].colorList[color])
                     img.onload = () => {
                         if (strList === knittedColor) {
                             colorList.insertAdjacentHTML('beforeEnd', `
@@ -281,9 +282,9 @@ setTimeout(() => {
                         //     color: chosenСlothing.dataset.color,
                         //     size: chosenSize.textContent
                         // }))
-                        let productStorage = localStorage.getItem('ProductFromStorageToMiniCart')
-                        if (ProductFromStorageToMiniCart.length === 0 && productStorage === null) {
-                            ProductFromStorageToMiniCart.push({
+                        let productStorage = localStorage.getItem('PRODUCT_FROM_STORAGE_TO_MINI_CART')
+                        if (PRODUCT_FROM_STORAGE_TO_MINI_CART.length === 0 && productStorage === null) {
+                            PRODUCT_FROM_STORAGE_TO_MINI_CART.push({
                                 img: chosenСolorImg.getAttribute('src'),
                                 name: productName.textContent,
                                 price: productPrice.textContent,
@@ -292,8 +293,8 @@ setTimeout(() => {
                             })
 
                         } else {
-                            ProductFromStorageToMiniCart.push(...JSON.parse(localStorage.getItem('ProductFromStorageToMiniCart')))
-                            ProductFromStorageToMiniCart.push({
+                            PRODUCT_FROM_STORAGE_TO_MINI_CART.push(...JSON.parse(localStorage.getItem('PRODUCT_FROM_STORAGE_TO_MINI_CART')))
+                            PRODUCT_FROM_STORAGE_TO_MINI_CART.push({
                                 img: chosenСolorImg.getAttribute('src'),
                                 name: productName.textContent,
                                 price: productPrice.textContent,
@@ -302,7 +303,7 @@ setTimeout(() => {
                             })
                         }
 
-                        localStorage.setItem('ProductFromStorageToMiniCart', JSON.stringify(ProductFromStorageToMiniCart))
+                        localStorage.setItem('PRODUCT_FROM_STORAGE_TO_MINI_CART', JSON.stringify(PRODUCT_FROM_STORAGE_TO_MINI_CART))
 
 
                         // addProducToCart()
@@ -480,8 +481,8 @@ function getProductFromStorage() {
         })
     }
 
-    let arr = JSON.parse(localStorage.getItem('ProductFromStorageToMiniCart'));
-    console.log('JSON.parse(localStorage.getItem(ProductFromStorageToMiniCart)) ', JSON.parse(localStorage.getItem('ProductFromStorageToMiniCart')))
+    let arr = JSON.parse(localStorage.getItem('PRODUCT_FROM_STORAGE_TO_MINI_CART'));
+    console.log('JSON.parse(localStorage.getItem(PRODUCT_FROM_STORAGE_TO_MINI_CART)) ', JSON.parse(localStorage.getItem('PRODUCT_FROM_STORAGE_TO_MINI_CART')))
     if (arr && arr.length > 0) {
         arr.forEach(item => {
             ProductsUl.insertAdjacentHTML('beforeEnd', `
