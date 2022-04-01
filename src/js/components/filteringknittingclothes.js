@@ -14,19 +14,31 @@ async function getData() {
     const catalogShoes = document.querySelector('.catalog-shoes__items');
 
     if (catalogKnits) {
-        const response = await axios.get('https://623cab3b7efb5abea6854ea5.mockapi.io/knitted-clothes');
-        const data = response.data;
-        console.log('data knitted ', data)
-        ShowClothes(data)
+        try {
+            const response = await axios.get('https://623cab3b7efb5abea6854ea5.mockapi.io/knitted-clothes');
+            const data = response.data;
+            ShowClothes(data)
+        } catch (error) {
+            document.querySelector('.site-container').style.display = 'none';
+            document.querySelector('.error-title').style.display = 'block';
+            throw new Error('Error: ', e);
+        }
+
     }
     if (catalogShoes) {
-        const response = await axios.get('https://623cab3b7efb5abea6854ea5.mockapi.io/shoes-clothes');
-        const data = response.data;
-        console.log('data shoes ', data)
-        ShowClothes(data)
+        try {
+            const response = await axios.get('https://623cab3b7efb5abea6854ea5.mockapi.io/shoes-clothes');
+            const data = response.data;
+            console.log('data shoes ', data)
+            ShowClothes(data)
+        } catch (error) {
+            document.querySelector('.site-container').style.display = 'none';
+            document.querySelector('.error-title').style.display = 'block';
+            throw new Error('Error: ', e);
+        }
+
     }
 
-    // return data;
 }
 
 
