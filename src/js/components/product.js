@@ -9,24 +9,30 @@ let ProductFromStorageToMiniCart = []
 async function getData() {
     const KnitsItemUl = document.querySelector('.catalog-knits__items');
     const ShoesItemUl = document.querySelector('.catalog-shoes__items')
-    console.log('KnitsItemUl ', KnitsItemUl);
-    console.log('ShoesItemUl ', ShoesItemUl)
     if (KnitsItemUl) {
-        console.log('1')
-        const response = await axios.get('https://623cab3b7efb5abea6854ea5.mockapi.io/knitted-clothes');
-        const data = response.data;
-        // knitted = data;
-        localStorage.setItem('arrProduct', JSON.stringify(data))
-        knitted = JSON.parse(localStorage.getItem('arrProduct'))
-
+        try {
+            const response = await axios.get('https://623cab3b7efb5abea6854ea5.mockapi.io/knitted-clothes');
+            const data = response.data;
+            localStorage.setItem('arrProduct', JSON.stringify(data))
+            knitted = JSON.parse(localStorage.getItem('arrProduct'))
+        } catch (e) {
+            document.querySelector('.site-container').style.display = 'none';
+            document.querySelector('.error-title').style.display = 'block';
+            throw new Error('Error: ', e);
+        }
     }
     if (ShoesItemUl) {
-        console.log('3')
-        const response = await axios.get('https://623cab3b7efb5abea6854ea5.mockapi.io/shoes-clothes');
-        const data = response.data;
-        // knitted = data;
-        localStorage.setItem('arrProduct', JSON.stringify(data))
-        knitted = JSON.parse(localStorage.getItem('arrProduct'))
+        try {
+            const response = await axios.get('https://623cab3b7efb5abea6854ea5.mockapi.io/shoes-clothes');
+            const data = response.data;
+            localStorage.setItem('arrProduct', JSON.stringify(data))
+            knitted = JSON.parse(localStorage.getItem('arrProduct'))
+        } catch (e) {
+            document.querySelector('.site-container').style.display = 'none';
+            document.querySelector('.error-title').style.display = 'block';
+            throw new Error('Error: ', e);
+        }
+
     }
 }
 getData()
@@ -45,7 +51,6 @@ setTimeout(() => {
         const shoesItem = document.querySelectorAll('.shoes-item')
         knitted = JSON.parse(localStorage.getItem('arrProduct'))
         if (products.length > 0) {
-            console.log('if knitted', knitted)
             products.forEach(product => {
                 product.addEventListener('click', () => {
                     console.log('product click')
@@ -90,7 +95,7 @@ setTimeout(() => {
         knitted = JSON.parse(localStorage.getItem('arrProduct'))
 
         if (productImgUl) {
-            if (knitted[productId]) {
+            if (knitted && knitted[productId]) {
                 knitted[productId].moreImagesProduct.forEach((image, index) => {
                     let imgCreate = document.createElement('img')
                     imgCreate.src = image
@@ -131,7 +136,7 @@ setTimeout(() => {
         }
 
 
-        if (knitted[productId]) {
+        if (knitted && knitted[productId]) {
             knitted[productId].availableSizes.forEach(size => {
                 if (sizeList) {
                     sizeList.insertAdjacentHTML('beforeEnd', `
@@ -477,7 +482,7 @@ function getProductFromStorage() {
 
     let arr = JSON.parse(localStorage.getItem('ProductFromStorageToMiniCart'));
     console.log('JSON.parse(localStorage.getItem(ProductFromStorageToMiniCart)) ', JSON.parse(localStorage.getItem('ProductFromStorageToMiniCart')))
-    if (arr.length > 0) {
+    if (arr && arr.length > 0) {
         arr.forEach(item => {
             ProductsUl.insertAdjacentHTML('beforeEnd', `
             <li class="mini-cart__product">
@@ -503,22 +508,25 @@ function getProductFromStorage() {
         })
 
         document.querySelector('.mini-cart__title-info').style.display = 'none';
+
+        arr.forEach(item => {
+            let sumStr = ''
+            for (let i = 0; i < item.price.length; i++) {
+                if (!isNaN(+item.price[i])) {
+                    sumStr += item.price[i]
+                }
+            }
+            sumProductPriceAll += (+sumStr)
+        })
+
+        document.querySelector('.mini-cart__price').innerHTML = sumProductPriceAll + ' руб.'
+        document.querySelector('.mini-cart__total-price').innerHTML = sumProductPriceAll + ' руб.'
+        document.querySelector('.mini-cart__count-value').innerHTML = arr.length;
+
     } else {
         document.querySelector('.mini-cart__title-info').style.display = 'block';
     }
 
-    arr.forEach(item => {
-        let sumStr = ''
-        for (let i = 0; i < item.price.length; i++) {
-            if (!isNaN(+item.price[i])) {
-                sumStr += item.price[i]
-            }
-        }
-        sumProductPriceAll += (+sumStr)
-    })
 
-    document.querySelector('.mini-cart__price').innerHTML = sumProductPriceAll + ' руб.'
-    document.querySelector('.mini-cart__total-price').innerHTML = sumProductPriceAll + ' руб.'
-    document.querySelector('.mini-cart__count-value').innerHTML = arr.length;
 
 }
