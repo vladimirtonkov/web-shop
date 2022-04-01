@@ -30,6 +30,7 @@
 
 
 .site-container {
+  display: block;
 
   &__content {
     margin-bottom: 30px;
@@ -38,6 +39,15 @@
 }
 
 
+.error-title {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
 
 @media (max-width: 1024px) {
   .site-container {
